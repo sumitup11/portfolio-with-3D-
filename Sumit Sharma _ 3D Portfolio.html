@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sumit Sharma | Software Developer Portfolio</title>
+  <meta name="description"
+    content="Sumit Sharma — aspiring Software Developer skilled in Java, web development, SQL, React, and Spring Boot.">
+  <meta property="og:title" content="Sumit Sharma | Software Developer Portfolio">
+  <meta property="og:description" content="Explore Sumit's skills, projects, experience, and contact details.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #101d30cc;
+      --text: #f3f7ff;
+      --muted: #a8b6ca;
+      --line: #263851;
+      --accent: #72e0c1;
+      --accent2: #78a9ff;
+      --sg: "Space Grotesk", sans-serif;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none
+    }
+
+    main,
+    nav,
+    footer {
+      position: relative;
+      z-index: 1
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #08111fcc;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .navin {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .logo {
+      font: 700 1.3rem var(--sg)
+    }
+
+    .logo span {
+      color: var(--accent)
+    }
+
+    .links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: .92rem
+    }
+
+    .links a:hover {
+      color: var(--accent)
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: .78rem;
+      font-weight: 700
+    }
+
+    section {
+      padding: 72px 0
+    }
+
+    .hero {
+      min-height: calc(100vh - 70px);
+      min-height: calc(100svh - 70px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0
+    }
+
+    .hero h1 {
+      font: 700 clamp(3rem, 8vw, 6.2rem)/1 var(--sg);
+      letter-spacing: -.06em;
+      margin: 16px 0
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .hero .txt {
+      max-width: 600px
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 26px 0
+    }
+
+    .btn {
+      display: inline-flex;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: #08111f99;
+      transition: transform .2s
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #07131b;
+      border-color: var(--accent)
+    }
+
+    .btn:hover {
+      transform: translateY(-3px)
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px
+    }
+
+    .tag {
+      border: 1px solid #33506a;
+      background: #12253a;
+      color: #dce9fa;
+      border-radius: 99px;
+      padding: 6px 12px;
+      font-size: .85rem
+    }
+
+    h2 {
+      font: 700 clamp(2rem, 4vw, 3rem)/1.1 var(--sg);
+      letter-spacing: -.045em;
+      margin: 8px 0 10px
+    }
+
+    .sh {
+      margin-bottom: 28px
+    }
+
+    .sh p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0
+    }
+
+    /* 3D tilt + reveal (tilt uses --rx/--ry; reveal uses translate/scale so they never fight) */
+    .t3 {
+      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transform-style: preserve-3d;
+      transition: transform .35s, translate .9s, scale .9s, opacity .9s, border-color .3s
+    }
+
+    .t3>* {
+      transform: translateZ(24px)
+    }
+
+    .rv {
+      opacity: 0;
+      translate: 0 50px;
+      scale: .94;
+      --rx: 22deg
+    }
+
+    .rv.in {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+      --rx: 0deg
+    }
+
+    .panel,
+    .card,
+    .skill,
+    .job,
+    .edu,
+    .cc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      backdrop-filter: blur(10px)
+    }
+
+    .panel,
+    .cc {
+      padding: 28px
+    }
+
+    .panel p,
+    .cc p {
+      color: var(--muted);
+      margin: 0
+    }
+
+    .t3:hover {
+      border-color: var(--accent)
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: 22px
+    }
+
+    .card {
+      overflow: hidden
+    }
+
+    .cb {
+      padding: 22px
+    }
+
+    .card h3 {
+      font: 700 1.35rem var(--sg);
+      margin: 6px 0 8px
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0
+    }
+
+    .status {
+      display: inline-block;
+      border-radius: 99px;
+      padding: 4px 10px;
+      background: #25443f;
+      color: #9df0d9;
+      font-size: .76rem;
+      font-weight: 700
+    }
+
+    /* CSS 3D spinning cube */
+    .scene {
+      height: 190px;
+      perspective: 700px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, #78a9ff22, transparent 70%)
+    }
+
+    .cube {
+      width: 90px;
+      height: 90px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 14s linear infinite
+    }
+
+    .cube i {
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid var(--accent);
+      background: #72e0c118;
+      display: grid;
+      place-items: center;
+      font: 700 1.5rem var(--sg);
+      font-style: normal;
+      color: var(--accent);
+      box-shadow: inset 0 0 24px #72e0c133
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotateX(360deg) rotateY(360deg)
+      }
+    }
+
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 16px
+    }
+
+    .skill,
+    .edu {
+      padding: 20px
+    }
+
+    .skill b {
+      display: block;
+      font-family: var(--sg);
+      font-size: 1.05rem;
+      color: var(--accent)
+    }
+
+    .skill small,
+    .edu p {
+      color: var(--muted)
+    }
+
+    .edu h3 {
+      font: 700 1rem var(--sg);
+      margin: 0 0 6px
+    }
+
+    .edu p {
+      margin: 0;
+      font-size: .9rem
+    }
+
+    .tl {
+      display: grid;
+      gap: 16px
+    }
+
+    .job {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 20px;
+      padding: 24px
+    }
+
+    .date {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .9rem
+    }
+
+    .job h3 {
+      font: 700 1.15rem var(--sg);
+      margin: 0
+    }
+
+    .org {
+      color: var(--muted)
+    }
+
+    .job p {
+      color: var(--muted);
+      margin: 10px 0 0
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 24px
+    }
+
+    .cc h3 {
+      font: 700 1.5rem var(--sg);
+      margin: 0 0 8px
+    }
+
+    .cl {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px
+    }
+
+    .cl a {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow-wrap: anywhere;
+      transition: .2s
+    }
+
+    .cl a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(6px)
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .88rem;
+      background: #08111fcc
+    }
+
+    .fi {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    #pre {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      transition: opacity .7s, visibility .7s;
+      perspective: 600px
+    }
+
+    #pre.done {
+      opacity: 0;
+      visibility: hidden
+    }
+
+    #pre b {
+      font: 700 clamp(2.5rem, 10vw, 5rem) var(--sg);
+      display: flex
+    }
+
+    #pre span {
+      opacity: 0;
+      display: inline-block;
+      transform: rotateY(90deg) translateZ(40px);
+      animation: fi .7s forwards;
+      color: var(--accent)
+    }
+
+    #pre i {
+      display: block;
+      height: 2px;
+      margin-top: 14px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0;
+      animation: ld 1.5s forwards
+    }
+
+    @keyframes fi {
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes ld {
+      to {
+        width: 100%
+      }
+    }
+
+    @media(max-width:800px) {
+      .links {
+        gap: 12px;
+        font-size: .82rem
+      }
+
+      .job {
+        grid-template-columns: 1fr;
+        gap: 6px
+      }
+    }
+
+    @media(max-width:520px) {
+
+      .links a:nth-child(2),
+      .links a:nth-child(3) {
+        display: none
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="pre">
+    <div><b id="pl"></b><i></i></div>
+  </div>
+  <canvas id="bg"></canvas>
+  <nav>
+    <div class="wrap navin"><a class="logo" href="#home">Sumit<span>.</span></a>
+      <div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
+          href="#experience">Experience</a><a href="#contact">Contact</a></div>
+    </div>
+  </nav>
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="txt">
+          <div class="eyebrow">Aspiring Software Developer</div>
+          <h1>Hi, I'm<br><span>Sumit Sharma.</span></h1>
+          <p class="lead">BBA student at JECRC University with hands-on experience in web development and an expanding
+            software development skill set. Familiar with Java, SQL, HTML, CSS, React, Spring Boot, AWS, HLD and LLD.
+            Currently building practical projects including an ATM Machine in Java and RideGo, while gaining industry
+            exposure through web development internships. Seeking a Software Developer role.</p>
+          <div class="actions"><a class="btn primary" href="#projects">Explore my projects ↗</a><a class="btn"
+              href="#contact">Get in touch</a><a class="btn" href="Sumit_Sharma_Software_Developer_Resume.pdf"
+              target="_blank" rel="noopener">View Resume ↗</a></div>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Web Development</span><span
+              class="tag">SQL</span><span class="tag">HLD / LLD</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious mind. Practical builder.</h2>
+        </div>
+        <div class="panel t3 rv">
+          <p>BBA student at JECRC University with hands-on experience in web development and an expanding software
+            development skill set. Familiar with Java, SQL, HTML, CSS, React, Spring Boot, AWS, HLD and LLD. Currently
+            building practical projects including an ATM Machine in Java and RideGo, while gaining industry exposure
+            through web development internships. Seeking a Software Developer role.</p>
+          <div class="tags"><span class="tag">Target Role: Software Developer</span><span class="tag">Web
+              Development</span><span class="tag">Software Design: HLD / LLD</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">Technical toolkit</div>
+          <h2>Skills I'm developing</h2>
+          <p>Technologies listed from my résumé. Skill levels are not ranked so the portfolio doesn't overstate
+            proficiency.</p>
+        </div>
+        <div class="grid3">
+          <div class="skill t3 rv"><b>Programming</b><small>Java, SQL</small></div>
+          <div class="skill t3 rv"><b>Web</b><small>HTML, CSS, React</small></div>
+          <div class="skill t3 rv"><b>Backend</b><small>Spring Boot</small></div>
+          <div class="skill t3 rv"><b>Cloud</b><small>AWS</small></div>
+          <div class="skill t3 rv"><b>Software Design</b><small>HLD, LLD</small></div>
+          <div class="skill t3 rv"><b>Tools</b><small>Git, GitHub</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects in progress</h2>
+          <p>These projects are ongoing, as described in my résumé. More details and demos can be added as they develop.
+          </p>
+        </div>
+        <div class="cards">
+          <article class="card t3 rv">
+            <div class="scene">
+              <div class="cube" data-f="₹,0,1,$,Java,ATM"></div>
+            </div>
+            <div class="cb"><span class="status">Ongoing</span>
+              <h3>ATM Machine</h3>
+              <p>Developing a Java-based ATM application focused on banking-style operations and cash counting logic.
+                Applying Java fundamentals, conditional logic, loops, methods, and input handling.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">Logic building</span><span
+                  class="tag">Input handling</span></div>
+            </div>
+          </article>
+          <article class="card t3 rv">
+            <div class="scene">
+              <div class="cube" data-f="GO,🚖,📍,🛣,Ride,App"></div>
+            </div>
+            <div class="cb"><span class="status">Ongoing</span>
+              <h3>RideGo</h3>
+              <p>Developing a ride-booking application concept and working on its application logic and features.
+                Exploring technologies and architecture required for a real-world ride-hailing style application.</p>
+              <div class="tags"><span class="tag">Web / Software</span><span class="tag">Application logic</span><span
+                  class="tag">System design</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">Industry exposure</div>
+          <h2>Experience &amp; learning</h2>
+        </div>
+        <div class="tl">
+          <div class="job t3 rv">
+            <div class="date">Jun 2026 – Present</div>
+            <div>
+              <h3>Web Developer Intern</h3>
+              <div class="org">ICE HURT TECHNOLOGY</div>
+              <p>Working on web development tasks and gaining practical experience in building and improving web
+                applications.</p>
+            </div>
+          </div>
+          <div class="job t3 rv">
+            <div class="date">Oct 2026 – Present</div>
+            <div>
+              <h3>AI Web Developer Intern</h3>
+              <div class="org">InAmigos Foundation</div>
+              <p>Working on AI-enabled web development tasks and applying web technologies in practical projects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">Education &amp; certifications</div>
+          <h2>Learning foundations</h2>
+        </div>
+        <div class="grid3">
+          <div class="edu t3 rv">
+            <h3>JECRC University, Jaipur</h3>
+            <p>Bachelor of Business Administration (BBA) · Undergraduate</p>
+          </div>
+          <div class="edu t3 rv">
+            <h3>R.V. Public School, Agra</h3>
+            <p>Class XII</p>
+          </div>
+          <div class="edu t3 rv">
+            <h3>Tagore Public School, Agra</h3>
+            <p>Class X</p>
+          </div>
+        </div>
+        <div class="sh rv" style="margin-top:44px">
+          <div class="eyebrow">Certifications</div>
+          <h2>Training &amp; credentials</h2>
+        </div>
+        <div class="grid3">
+          <div class="edu t3 rv">
+            <h3>HackerRank — Java (Basic)</h3>
+            <p>Earned 17 Sep 2026</p>
+          </div>
+          <div class="edu t3 rv">
+            <h3>HackerRank — Software Engineer Role Certification</h3>
+            <p>Earned 17 Sep 2026</p>
+          </div>
+          <div class="edu t3 rv">
+            <h3>Internshala Trainings — Web Development</h3>
+            <p>8-week training · Completed 07 Aug 2025. Modules: HTML, CSS, Bootstrap, DBMS, PHP, JavaScript, React,
+              Final Project, and AI in Web Development.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="sh rv">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have an opportunity or idea?</h2>
+          <p>I'm interested in learning opportunities, internships, and entry-level software development roles.</p>
+        </div>
+        <div class="contact">
+          <div class="cc t3 rv">
+            <h3>Contact details</h3>
+            <p>Reach out through email or connect with me professionally.</p>
+            <div class="cl"><a href="mailto:sumitupadhyayncc008@gmail.com">✉ sumitupadhyayncc008@gmail.com</a><a
+                href="https://linkedin.com/in/sumit-sharma-7a424a2ab" target="_blank" rel="noopener">↗ LinkedIn
+                profile</a><a href="https://github.com/sumitup11" target="_blank" rel="noopener">↗ GitHub —
+                sumitup11</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap fi"><span>© 2026 Sumit Sharma · Software Developer Portfolio</span><span>Built with curiosity and a
+        commitment to learning.</span></div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    /* Preloader */
+    $("#pl").innerHTML = "SUMIT".split("").map((c, i) => `<span style="animation-delay:${i * .1}s">${c}</span>`).join("");
+    setTimeout(() => $("#pre").classList.add("done"), 1800);
+    /* CSS 3D cubes: faces from data-f */
+    const T = ["rotateY(0)", "rotateY(90deg)", "rotateY(180deg)", "rotateY(270deg)", "rotateX(90deg)", "rotateX(-90deg)"];
+    $$(".cube").forEach(c => c.innerHTML = c.dataset.f.split(",").map((t, i) => `<i style="transform:${T[i]} translateZ(45px)">${t}</i>`).join(""));
+    /* Scroll reveal */
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target) } }), { threshold: .12 });
+    $$(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * .08 + "s"; io.observe(el) });
+    /* Mouse-tilt on 3D cards */
+    $$(".t3").forEach(el => {
+      el.addEventListener("pointermove", e => {
+        if (e.pointerType !== "mouse") return; const r = el.getBoundingClientRect();
+        el.style.setProperty("--ry", ((e.clientX - r.left) / r.width - .5) * 14 + "deg"); el.style.setProperty("--rx", -((e.clientY - r.top) / r.height - .5) * 14 + "deg"); el.style.transitionDelay = "0s"
+      });
+      el.addEventListener("pointerleave", () => { el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg") });
+    });
+    /* Three.js background: hero model + particles, reacts to mouse & scroll */
+    try {
+      const cv = $("#bg"), r = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: true });
+      r.setPixelRatio(Math.min(devicePixelRatio, 2)); r.setSize(innerWidth, innerHeight);
+      const sc = new THREE.Scene(), cam = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, .1, 100); cam.position.z = 7;
+      const g = new THREE.Group(); sc.add(g);
+      const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1), new THREE.MeshBasicMaterial({ color: 0x72e0c1, wireframe: true, transparent: true, opacity: .55 }));
+      const core = new THREE.Mesh(new THREE.IcosahedronGeometry(.95, 0), new THREE.MeshStandardMaterial({ color: 0x78a9ff, emissive: 0x2a4a9a, metalness: .5, roughness: .3, flatShading: true }));
+      g.add(ico, core);
+      const rings = [0, 1, 2].map(i => { const m = new THREE.Mesh(new THREE.TorusGeometry(2.3 + i * .4, .012, 8, 120), new THREE.MeshBasicMaterial({ color: i ? 0x78a9ff : 0x72e0c1 })); m.rotation.set(i * 1.1, i * .7, 0); g.add(m); return m });
+      const N = 700, pos = new Float32Array(N * 3); for (let i = 0; i < N * 3; i++)pos[i] = (Math.random() - .5) * 28;
+      const pg = new THREE.BufferGeometry(); pg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      const pts = new THREE.Points(pg, new THREE.PointsMaterial({ color: 0x9ecbff, size: .04, transparent: true, opacity: .8 })); sc.add(pts);
+      sc.add(new THREE.AmbientLight(0xffffff, .5)); const pl = new THREE.PointLight(0x72e0c1, 2, 30); pl.position.set(4, 3, 6); sc.add(pl);
+      let tx = 0, ty = 0, wide = innerWidth > 800;
+      addEventListener("pointermove", e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5 });
+      addEventListener("resize", () => { r.setSize(innerWidth, innerHeight); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); wide = innerWidth > 800 });
+      let t = 0; (function a() {
+        requestAnimationFrame(a); t += .01;
+        const s = Math.min(scrollY / innerHeight, 1.5), p = scrollY / Math.max(1, document.body.scrollHeight - innerHeight);
+        ico.rotation.x = t * .5 + ty; ico.rotation.y = t * .7 + tx * 2; core.rotation.x = -t; core.rotation.y = -t * .8;
+        rings.forEach((m, i) => m.rotation.z = t * (.4 + i * .2));
+        /* model: sits right of hero text, drifts left & shrinks as you scroll */
+        const bx = wide ? 3.1 : 0, by = wide ? 0 : 2.3;
+        g.position.x += ((bx - s * (wide ? 6.2 : 0) + tx * .8) - g.position.x) * .06; g.position.y += ((by - s * (wide ? 0 : 1) - ty * .5) - g.position.y) * .06;
+        g.scale.setScalar(Math.max(.45, wide ? 1 - s * .4 : .75 - s * .2));
+        pts.rotation.y = t * .05 + p * 3; pts.rotation.x = p * 1.5; cam.position.y = -p * 2;
+        r.render(sc, cam)
+      })();
+    } catch (e) { cv = null }
+  </script>
+</body>
+
+</html>
